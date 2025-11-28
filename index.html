@@ -252,8 +252,75 @@
         messagesDiv.appendChild(div);
         messagesDiv.scrollTop = messagesDiv.scrollHeight;
     });
+        // ----------------------------
+    // Mini igra: Kamen, papir, makaze
+    // ----------------------------
+
+    const playerChoiceSpan = document.getElementById("playerChoice");
+    const computerChoiceSpan = document.getElementById("computerChoice");
+    const roundResultSpan = document.getElementById("roundResult");
+    const playerScoreSpan = document.getElementById("playerScore");
+    const computerScoreSpan = document.getElementById("computerScore");
+    const drawScoreSpan = document.getElementById("drawScore");
+    const gameButtons = document.querySelectorAll(".game-buttons button");
+
+    let playerScore = 0;
+    let computerScore = 0;
+    let drawScore = 0;
+
+    function randomComputerMove() {
+        const moves = ["kamen", "papir", "makaze"];
+        const index = Math.floor(Math.random() * moves.length);
+        return moves[index];
+    }
+
+    function decideWinner(player, computer) {
+        if (player === computer) return "neriješeno";
+
+        if (
+            (player === "kamen" && computer === "makaze") ||
+            (player === "papir" && computer === "kamen") ||
+            (player === "makaze" && computer === "papir")
+        ) {
+            return "pobjeda";
+        }
+
+        return "poraz";
+    }
+
+    function playRound(playerMove) {
+        const computerMove = randomComputerMove();
+
+        playerChoiceSpan.textContent = playerMove;
+        computerChoiceSpan.textContent = computerMove;
+
+        const result = decideWinner(playerMove, computerMove);
+
+        if (result === "pobjeda") {
+            roundResultSpan.textContent = "Pobijedio si ovu rundu! 🎉";
+            playerScore++;
+        } else if (result === "poraz") {
+            roundResultSpan.textContent = "Izgubio si ovu rundu. 😅";
+            computerScore++;
+        } else {
+            roundResultSpan.textContent = "Neriješeno. 🤝";
+            drawScore++;
+        }
+
+        playerScoreSpan.textContent = playerScore;
+        computerScoreSpan.textContent = computerScore;
+        drawScoreSpan.textContent = drawScore;
+    }
+
+    gameButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+            const move = btn.getAttribute("data-move");
+            playRound(move);
+        });
+    });
 </script>
 </body>
 </html>
+
 
 
