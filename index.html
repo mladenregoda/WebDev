@@ -95,6 +95,36 @@
             </p>
         </div>
     </section>
+        <section id="game" class="info-section">
+        <div class="container">
+            <h2>Mini igra: Kamen, papir, makaze</h2>
+            <p class="small">
+                Odaberi potez i vidi da li možeš pobijediti računar. Rezultat se
+                računa lokalno, ne šalje se u bazu.
+            </p>
+
+            <div class="card game-card">
+                <div class="game-status">
+                    <p><strong>Tvoj izbor:</strong> <span id="playerChoice">–</span></p>
+                    <p><strong>Računar:</strong> <span id="computerChoice">–</span></p>
+                    <p><strong>Rezultat runde:</strong> <span id="roundResult">–</span></p>
+                </div>
+
+                <div class="game-buttons">
+                    <button data-move="kamen">🪨 Kamen</button>
+                    <button data-move="papir">📄 Papir</button>
+                    <button data-move="makaze">✂️ Makaze</button>
+                </div>
+
+                <div class="game-score">
+                    <p><strong>Skor:</strong></p>
+                    <p>Ti: <span id="playerScore">0</span></p>
+                    <p>Računar: <span id="computerScore">0</span></p>
+                    <p>Neriješeno: <span id="drawScore">0</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
 </main>
 
 <footer class="site-footer">
@@ -225,4 +255,5 @@
 </script>
 </body>
 </html>
+
 
