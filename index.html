@@ -4,137 +4,119 @@
     <meta charset="UTF-8">
     <title>Global Chat</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #0f172a;
-            color: #e5e7eb;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        .card {
-            background: #020617;
-            border-radius: 12px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.4);
-            width: 100%;
-            max-width: 500px;
-            padding: 20px;
-        }
-
-        h1, h2 {
-            text-align: center;
-            margin-top: 0;
-        }
-
-        #welcome, #chat {
-            display: none;
-        }
-
-        .field {
-            display: flex;
-            gap: 10px;
-            margin-top: 20px;
-        }
-
-        input[type="text"] {
-            flex: 1;
-            padding: 8px 10px;
-            border-radius: 6px;
-            border: 1px solid #4b5563;
-            background: #020617;
-            color: #e5e7eb;
-        }
-
-        button {
-            padding: 8px 14px;
-            border-radius: 6px;
-            border: none;
-            cursor: pointer;
-            background: #38bdf8;
-            color: #020617;
-            font-weight: bold;
-        }
-
-        button:hover {
-            background: #0ea5e9;
-        }
-
-        #messages {
-            margin-top: 15px;
-            height: 260px;
-            overflow-y: auto;
-            border-radius: 8px;
-            border: 1px solid #1f2937;
-            padding: 10px;
-            background: #020617;
-            font-size: 14px;
-        }
-
-        .msg {
-            margin-bottom: 6px;
-            line-height: 1.3;
-        }
-
-        .msg .nick {
-            font-weight: bold;
-            color: #38bdf8;
-        }
-
-        .msg .time {
-            font-size: 11px;
-            color: #9ca3af;
-            margin-left: 4px;
-        }
-
-        .system {
-            text-align: center;
-            font-size: 12px;
-            color: #9ca3af;
-            margin: 8px 0;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="card">
-    <div id="welcome">
-        <h1>Dobrodošao u global chat</h1>
-        <p>Unesi nickname i klikni OK.</p>
-        <div class="field">
-            <input type="text" id="nicknameInput" placeholder="Tvoj nickname">
-            <button id="enterBtn">OK</button>
+<header class="site-header">
+    <div class="container header-inner">
+        <div>
+            <h1 class="logo">Global Chat</h1>
+            <p class="subtitle">Jednostavan anonimni chat dostupan svima koji imaju link.</p>
         </div>
+        <nav class="nav">
+            <a href="#chat-section">Chat</a>
+            <a href="#about">O projektu</a>
+            <a href="#rules">Pravila</a>
+        </nav>
     </div>
+</header>
 
-    <div id="chat">
-        <h2 id="chatTitle">Global chat</h2>
-        <div id="messages"></div>
-        <div class="field">
-            <input type="text" id="messageInput" placeholder="Napiši poruku i pritisni Enter ili Pošalji">
-            <button id="sendBtn">Pošalji</button>
+<main>
+    <section class="hero">
+        <div class="container hero-inner">
+            <div class="hero-text">
+                <h2>Dobrodošao na Global Chat</h2>
+                <p>
+                    Unesi nadimak i pridruži se globalnoj sobi za razgovor.
+                    Sve poruke se prikazuju uživo svima koji su trenutno na sajtu.
+                </p>
+                <ul class="features">
+                    <li>💬 Globalna soba za sve korisnike</li>
+                    <li>⚡ Poruke u realnom vremenu (Firebase)</li>
+                    <li>🔒 Nickname bez registracije</li>
+                </ul>
+            </div>
+            <div class="hero-card" id="chat-section">
+                <div class="card">
+                    <div id="welcome">
+                        <h3>Pridruži se chatu</h3>
+                        <p>Unesi nickname i klikni <strong>OK</strong>.</p>
+                        <div class="field">
+                            <input type="text" id="nicknameInput" placeholder="Tvoj nickname">
+                            <button id="enterBtn">OK</button>
+                        </div>
+                        <p class="hint">Ako ostaviš prazno, dodaćemo ti random Guest ime.</p>
+                    </div>
+
+                    <div id="chat">
+                        <div class="chat-header">
+                            <h3 id="chatTitle">Global chat</h3>
+                        </div>
+                        <div id="messages"></div>
+                        <div class="field field-message">
+                            <input type="text" id="messageInput" placeholder="Napiši poruku i pritisni Enter ili Pošalji">
+                            <button id="sendBtn">Pošalji</button>
+                        </div>
+                        <p class="hint small">Poruke su ograničene na ~200 karaktera radi zaštite od spama.</p>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
+    </section>
 
-<!-- Firebase v8 SDK (lakše za početak) -->
+    <section id="about" class="info-section">
+        <div class="container">
+            <h2>O projektu</h2>
+            <p>
+                Ovaj sajt je napravljen kao lični projekat za učenje web razvoja, mreža i sigurnosti.
+                Frontend je običan HTML, CSS i JavaScript, a poruke se čuvaju u
+                <strong>Firebase Realtime Database</strong>.
+            </p>
+            <p>
+                Cilj je da se kroz praktičan primjer nauče pojmovi kao što su:
+                klijent–server, real-time komunikacija, sigurnosna pravila (rules) u bazi
+                i zaštita od zloupotreba.
+            </p>
+        </div>
+    </section>
+
+    <section id="rules" class="info-section section-alt">
+        <div class="container">
+            <h2>Pravila chata</h2>
+            <ul class="rules-list">
+                <li>❌ Bez uvreda, vrijeđanja i govora mržnje.</li>
+                <li>❌ Ne dijelite lične podatke (brojeve telefona, adrese, šifre).</li>
+                <li>⚠️ Chat je anoniman – tretiraj sve poruke sa rezervom.</li>
+                <li>🧹 Povremeno se baza čisti, pa je chat više “live” nego arhiva.</li>
+            </ul>
+            <p class="small">
+                Napomena: Tehnički dio (Firebase rules) je podešen tako da onemogući brisanje
+                i izmjenu tuđih poruka, kao i preveliki spam.
+            </p>
+        </div>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <div class="container footer-inner">
+        <p>© <span id="year"></span> Global Chat – demo projekat za učenje web tehnologija.</p>
+    </div>
+</footer>
+
+<!-- Firebase v8 SDK -->
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
 
 <script>
-    // TODO: OVDE UBACI SVOJ FIREBASE CONFIG
-    // Kopiraš iz Firebase konzole (Project settings → Your apps → Web)
+    // 🔧 OVDJE UBACI SVOJ PRAVI FIREBASE CONFIG (isti onaj koji već koristiš)
     var firebaseConfig = {
-        apiKey: "AIzaSyAAt69CcHUgRTN2ZRT3tLkiNvSeEfI_EIY",
-        authDomain: "global-chat-project-d4701.firebaseapp.com",
-        databaseURL: "https://global-chat-project-d4701-default-rtdb.europe-west1.firebasedatabase.app",
-        projectId: "global-chat-project-d4701",
-        storageBucket: "global-chat-project-d4701.appspot.com",
-        messagingSenderId: "1079106457634",
-        appId: "1:1079106457634:web:4d8f3dff6c3ad5f3927a7b",
-        measurementId: "G-0D9LPH17ZJ"
+        apiKey: "OVDJE_TVOJ_API_KEY",
+        authDomain: "OVDJE_TVOJ_AUTH_DOMAIN",
+        databaseURL: "OVDJE_TVOJ_DATABASE_URL",
+        projectId: "OVDJE_TVOJ_PROJECT_ID",
+        storageBucket: "OVDJE_TVOJ_STORAGE_BUCKET",
+        messagingSenderId: "OVDJE_TVOJ_SENDER_ID",
+        appId: "OVDJE_TVOJ_APP_ID"
     };
 
     firebase.initializeApp(firebaseConfig);
@@ -151,9 +133,13 @@
     const messagesDiv = document.getElementById("messages");
     const messageInput = document.getElementById("messageInput");
     const sendBtn = document.getElementById("sendBtn");
+    const yearSpan = document.getElementById("year");
 
-    // Prikaži formu za nickname na početku
+    yearSpan.textContent = new Date().getFullYear();
+
+    // prikaži formu za nickname na početku
     welcomeDiv.style.display = "block";
+    chatDiv.style.display = "none";
 
     function enterChat() {
         let nick = nicknameInput.value.trim();
@@ -165,7 +151,7 @@
         welcomeDiv.style.display = "none";
         chatDiv.style.display = "block";
 
-        // Pošalji sistemsku poruku da je neko ušao (nije obavezno)
+        // sistemska poruka
         messagesRef.push({
             nick: "SYSTEM",
             text: nickname + " se pridružio chatu",
@@ -205,9 +191,10 @@
         return h + ":" + m;
     }
 
-    // Slušanje poruka u realnom vremenu
+    // slušanje poruka u realnom vremenu
     messagesRef.limitToLast(100).on("child_added", function (snapshot) {
         const msg = snapshot.val();
+        console.log("Nova poruka:", msg);
         const div = document.createElement("div");
 
         if (msg.system) {
@@ -237,5 +224,3 @@
 </script>
 </body>
 </html>
-
-
