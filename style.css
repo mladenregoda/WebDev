@@ -339,4 +339,54 @@ button:active {
     .hero-card {
         margin-top: 8px;
     }
+    /* Game */
+
+.game-card {
+    margin-top: 12px;
+    display: grid;
+    grid-template-columns: minmax(0, 2.2fr) minmax(0, 1.2fr);
+    gap: 16px;
+}
+
+.game-status p {
+    margin: 4px 0;
+    font-size: 0.9rem;
+}
+
+.game-buttons {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.game-buttons button {
+    flex: 1;
+    min-width: 90px;
+}
+
+.game-score {
+    border-left: 1px solid #111827;
+    padding-left: 12px;
+    font-size: 0.9rem;
+}
+
+.game-score p {
+    margin: 3px 0;
+}
+
+/* responsive za igru */
+
+@media (max-width: 768px) {
+    .game-card {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 10px;
+    }
+
+    .game-score {
+        border-left: none;
+        border-top: 1px solid #111827;
+        padding-left: 0;
+        padding-top: 8px;
+    }
 }
